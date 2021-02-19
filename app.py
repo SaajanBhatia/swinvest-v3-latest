@@ -86,7 +86,7 @@ pageTemplates = {
 }
 
 #Database Connection and Session Declaration
-engine = create_engine(("mysql+pymysql://root:{}@localhost/swinvest").format(os.environ.get('DATABASE_PASSWORD')), max_overflow=10, pool_size=5)
+engine = create_engine(("mysql+pymysql://root:{}@172.31.2.42/swinvest").format(os.environ.get('DATABASE_PASSWORD')), max_overflow=10, pool_size=5)
 db = scoped_session(sessionmaker(bind=engine))
 
 #Web App (Flask) Declaration
@@ -1303,7 +1303,7 @@ if __name__ == '__main__':
     ## allow debug page for test purposes however set to false for production purposes
     app.debug = True
 	#Web Application - Running on port 8090 local host (0.0.0.0:8090)
-    app.run(port=8090, threaded=True, host='localhost')
+    app.run(port=8090, threaded=True, host='0.0.0.0')
 
     
 ########################################## End of Code ##########################################
