@@ -1,0 +1,173 @@
+{% extends 'layout.html' %}
+{% block body %}
+
+
+<div class="container-fluid">
+    <div class="container">
+        <div class="row">
+            <div class="col text-center">
+                <div class="card">
+                <div class="card-header">
+                    Account Settings
+    </div>
+    <div class="row text-center">
+        <div class="col text-center">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, msg in messages %}
+                    {% if category == 'accountSettingError' %}
+                    <!--Error MEssage Trigger-->
+                        <h5 style="background-color: red; color: white; padding: 2vh; border-radius: 25px;" 
+                                class="text-center">{{msg}}</h5>
+                    {% endif %}
+                    {% if category == 'accountSettingSuccess' %}
+                    <!--Success Message Trigger-->
+                        <h5 style="background-color: green; color: white; padding: 2vh; border-radius: 25px;" 
+                                class="text-center">{{msg}}</h5>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        </div>
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Account Details</h4>
+        <p class="card-text">View and change account details</p>
+        <div class="col text-center">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Account Username</h4>
+                        <h6 class="card-subtitle">Account usernames can't be changed
+                        </h6>
+                        <form class="mt-4">
+                            <div class="form-group">
+                                <input type="text" class="form-control text-center" id="readonly"
+                                    placeholder="{{session['username']}}" readonly> 
+                                    <!--Display username as immutable (readonly)-->
+                            </div>
+                        </form>
+                    </div>
+                </div>
+        </div>
+        
+        <div class="col text-center">
+
+
+            <div id="login-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="text-center mt-2 mb-4">
+                            <h1>Change Your Password</h1>
+                        </div>
+
+                        <form class="pl-3 pr-3" name="accSettings" value="changePassword" method="POST" action="">
+                            <!--Start of form for changing password-->
+
+                            <div class="form-group">
+                                <!--Make user type username in confirmation of changing password-->
+                                <label>To confirm the change, type your email here.</label>
+                                <input class="form-control" type="email" id="emailaddress1"
+                                    required="" placeholder="{{session['username']}}" name="confirmUsername">
+                            </div>
+
+                            <div class="form-group">
+                                <!--Input for existing password-->
+                                <label for="password1">Existing Password</label>
+                                <input class="form-control" name="currentPassword" type="password" required=""
+                                    id="password1" placeholder="Enter your existing password">
+                            </div>
+
+                            <div class="form-group">
+                                <!--Input for new password-->
+                                <label for="password1">New Password</label>
+                                <input class="form-control" name="newPassword" type="password" required=""
+                                    id="password1" placeholder="Enter a new password" maxlength="60">
+                                    <!--Max Length if new password is saved to database-->
+                            </div>
+
+                            <div class="form-group">
+                                <label for="password1">Confirm Password</label>
+                                <!--Confirmation of new password-->
+                                <input class="form-control" name="confirmNewPassword" type="password" required=""
+                                    id="password1" placeholder="Confirm password">
+                            </div>
+
+
+                            <div class="form-group text-center">
+                                <!--Submission of new password-->
+                                <button class="btn btn-rounded btn-primary" name='accSettings' 
+                                value="changePassword" type="submit">Submit Change</button>
+                            </div>
+                            <!--End of form for changing password-->
+                        </form>
+
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+
+        <div class="card">
+            <div class="card-body">
+                <!--Triger Modal to change password wuth button-->
+                <h4 class="card-title">Change User Password</h4>
+                    <h6 class="card-subtitle">Change your password here.
+                    </h6>
+                <button type="button" class="btn btn-info" data-toggle="modal"
+                        data-target="#login-modal">Change your Password</button>
+            </div>
+            
+        </div>
+        </div>
+
+        <div class="col text-center">
+            <div class="card">
+                <div class="card-body text-center">
+                    <!--Input to change first name-->
+                    <h4 class="card-title">First Name</h4>
+                    <h6 class="card-subtitle">Type a new First Name here</h6>
+                    <form class="mt-4" name="accSettings" method="POST" action="" value="changeFirstName">
+                        <div class="form-group">
+                            <input type="text" class="form-control text-center" id="prenametext" name="firstName"
+                             value="{{session['firstName']}}">
+                        </div>
+                        <button class="btn btn-info" type="submit" name="accSettings" 
+                        value="changeFirstName">
+                            Change your First Name
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col text-center">
+            <div class="card">
+                <div class="card-body">
+                    <!--Input to change last name-->
+                    <h4 class="card-title">Last Name</h4>
+                    <h6 class="card-subtitle">Type a new Last Name here</h6>
+                    <form class="mt-4" name='accSettings' method="POST" action="" value="changeLastName">
+                        <div class="form-group">
+                            <input type="text" class="form-control text-center" id="prenametext" name="lastName" 
+                            value="{{session['lastName']}}">
+                        </div>
+                        <button class="btn btn-info" type="submit" name="accSettings" 
+                        value="changeLastName">
+                            Change your Last Name
+                        </button>
+                    </form> 
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+            </div>
+            
+        </div>
+        </div>
+        
+    </div>
+
+</div>
+{% endblock %}

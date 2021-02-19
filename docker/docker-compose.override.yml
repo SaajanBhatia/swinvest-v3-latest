@@ -1,0 +1,26 @@
+version: "3.4"
+services:
+  swinvest:
+    build: /home/ubuntu/swinvest-v3
+    image: swinvest:latest
+    ports:
+      - 8090:8090
+    container_name: swinvest
+    expose:
+      - '8090'
+    restart: unless-stopped
+  db:
+    image: mysql
+    cap_add:
+      - SYS_NICE # CAP_SYS_NICE
+    container_name: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=Password_123
+      - MYSQL_DATABASE=article
+      - MYSQL_USER=saajan
+      - MYSQL_PASSWORD=Discovery_18
+    volumes:
+      - ./mysql-database:/config
+    ports:
+      - 3306:3306
+    restart: unless-stopped

@@ -1,0 +1,202 @@
+{% extends 'layout.html' %}
+{% block body %}
+
+<div class="container-fluid">
+    <div class="row text-center" style="margin-bottom: 3vh;">
+        <div class="col-12 mt-4">
+            <h2 class="mb-0 text-center">Select your most important investments</h2>
+        </div>
+    </div>
+    <form method="POST" action="">
+    <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-4">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Amazon</h4>
+                    <h6 class="card-subtitle">Select your priority from high, medium and low.</h6>
+                        <div class="form-group mb-4">
+                            <label class="mr-sm-2" for="inlineFormCustomSelect">Select</label>
+                            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name='amzn'>
+                                <option selected value="3">Choose...</option>
+                                <option value="1">High</option>
+                                <option value="2">Medium</option>
+                                <option value="3">Low</option>
+                            </select>
+                        </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-4">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Apple</h4>
+                    <h6 class="card-subtitle">Select your priority from high, medium and low.</h6>
+                        <div class="form-group mb-4">
+                            <label class="mr-sm-2" for="inlineFormCustomSelect">Select</label>
+                            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name='aapl'>
+                                <option selected value="3">Choose...</option>
+                                <option value="1">High</option>
+                                <option value="2">Medium</option>
+                                <option value="3">Low</option>
+                            </select>
+                        </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-4">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Facebook</h4>
+                    <h6 class="card-subtitle">Select your priority from high, medium and low.</h6>
+                        <div class="form-group mb-4">
+                            <label class="mr-sm-2" for="inlineFormCustomSelect">Select</label>
+                            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name='fb'>
+                                <option selected value="3">Choose...</option>
+                                <option value="1">High</option>
+                                <option value="2">Medium</option>
+                                <option value="3">Low</option>
+                            </select>
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-4">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Google</h4>
+                    <h6 class="card-subtitle">Select your priority from high, medium and low.</h6>
+                    
+                        <div class="form-group mb-4">
+                            <label class="mr-sm-2" for="inlineFormCustomSelect">Select</label>
+                            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name='googl'>
+                                <option selected value="3">Choose...</option>
+                                <option value="1">High</option>
+                                <option value="2">Medium</option>
+                                <option value="3">Low</option>
+                            </select>
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-4">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Microsoft</h4>
+                    <h6 class="card-subtitle">Select your priority from high, medium and low.</h6>
+                        <div class="form-group mb-4">
+                            <label class="mr-sm-2" for="inlineFormCustomSelect">Select</label>
+                            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name='msft'>
+                                <option selected value="3">Choose...</option>
+                                <option value="1">High</option>
+                                <option value="2">Medium</option>
+                                <option value="3">Low</option>
+                            </select>
+                        </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-4">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Netflix</h4>
+                    <h6 class="card-subtitle">Select your priority from high, medium and low.</h6>
+                        <div class="form-group mb-4">
+                            <label class="mr-sm-2" for="inlineFormCustomSelect">Select</label>
+                            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name='nflx'>
+                                <option selected value="3">Choose...</option>
+                                <option value="1">High</option>
+                                <option value="2">Medium</option>
+                                <option value="3">Low</option>
+                            </select>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row text-center">
+        <div class="col-12 mt-4">
+            <button type="submit" class="btn waves-effect waves-light btn-lg btn-rounded btn-primary" type="submit">
+                Submit
+            </button>
+        </div>
+    </div>
+    
+    </form>
+    <div class="row">
+        <div class="col-12 mt-4">
+            <h2 class="mb-0 text-center">Live News Feed</h2>
+        </div>
+    </div>
+
+    
+    
+    <div class="row">
+        <div class="col-12 mt-4">
+            <!-- Card -->
+            {% for i in range(6): %}
+            <div class="card text-center">
+                <div class="card-header">
+                    <h2 class="card-title">
+                        {{companies[i]}}
+                    </h2>
+                </div>
+                <div class="card-body">
+                    <div class="row mt-4">
+                        <div class="col-md-6">
+                            <div class="card border-primary">
+                                
+                                <div class="card-body">
+                                    <h3 class="card-title"><a target="_blank" href={{data[i]['links'][0]}}>{{data[i]['headlines'][0]}}</a></h3>
+                                    <p class="card-text">Published on {{data[i]['dates'][0]}}</p>
+                                    <a href={{data[i]['links'][0]}} target="_blank" class="btn btn-secondary">Go visit</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card border-success">
+                                
+                                <div class="card-body">
+                                    <h3 class="card-title"><a href={{data[i]['links'][1]}} target="_blank">{{data[i]['headlines'][1]}}</a></a></h3>
+                                    <p class="card-text">Published on {{data[i]['dates'][1]}}</p>
+                                    <a href={{data[i]['links'][1]}} target="_blank" class="btn btn-secondary">Go visit</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-md-6">
+                            <div class="card border-danger">
+                                
+                                <div class="card-body">
+                                    <h3 class="card-title"><a target="_blank" href={{data[i]['links'][2]}}>{{data[i]['headlines'][2]}}</a></h3>
+                                    <p class="card-text">Published on {{data[i]['dates'][2]}}</p>
+                                    <a href={{data[i]['links'][2]}} target="_blank" class="btn btn-secondary">Go visit</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card border-warning">
+                                
+                                <div class="card-body">
+                                    <h3 class="card-title"><a target="_blank" href={{data[i]['links'][3]}}>{{data[i]['headlines'][3]}}</a></h3>
+                                    <p class="card-text">Published on {{data[i]['dates'][3]}}</p>
+                                    <a href={{data[i]['links'][3]}} target="_blank" class="btn btn-secondary">Go visit</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="card-footer text-muted">
+                    Stock Ticker: {{ (data[i]['token']).upper() }}
+                </div>
+            </div>
+            {% endfor %}
+            <!-- Card -->
+        </div>
+    </div>
+</div>
+
+{% endblock %}

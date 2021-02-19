@@ -1,0 +1,147 @@
+{% extends 'layout.html' %}
+{% block body %}
+<style>
+html {
+scroll-behavior: smooth;
+}
+</style>
+<div class="row">
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+<div class="carousel-inner">
+<div class="carousel-item active">
+<img src="https://images.pexels.com/photos/311012/pexels-photo-311012.jpeg?cs=srgb&dl=pexels-amar-saleem-311012.jpg&fm=jpg" class="d-block w-100" alt="..." style="height: 50vh; object-fit: cover;width: auto; object-position: 100% 80%;">
+<div class="carousel-caption " style="top: 65%; transform: translateY(-50%);">
+<h1><strong>News Feed</strong></h1>
+<!--User Greetings - access info from Session rather than database retrieval-->
+<h5>Welcome back, {{session['firstName']+' '+session['lastName']}}</h5>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!--Start Flash-->
+<div class="container">
+<div class="row" style="width: 100%;">
+<div class="col" style="width: 100%;">
+<!--Trigger a message-->
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, msg in messages %}
+            {% if category == 'newsError' %}
+            <!--Error Message-->
+            <h5 style="background-color: red; color: white; padding: 2vh; border-radius: 25px;" class="text-center">{{msg}}</h5>
+
+            {% endif %}
+            <!--Success Message-->
+            {% if category == 'newsSuccess' %}
+            <h5 style="background-color: green; color: white; padding: 2vh; border-radius: 25px;" class="text-center">{{msg}}</h5>
+
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+</div>
+</div>
+</div>
+
+
+<!--End Flash-->
+
+<div class="container" style="padding: 3px;">
+<div class="row" style="padding: 8px;">
+<div class="col-lg-4">
+<div id="topOfPage">
+    <div class="card">
+        <div class="card-body text-center">
+            <!--Start Search for ticker-->
+            
+            
+            <h4 class="card-title">Search NASDAQ Stock Markets</h4>
+            <h6 class="card-subtitle">Search for a ticker here. Maximum Preferences: 5</h6>
+            <form action="" method="POST" name="tickerSearch" value='tickerSearch'>
+                <div class="form-group">
+                    <!--Input for Ticker Query-->
+                    <input type="text" class="form-control text-center ticker-query" placeholder="Enter a ticker here" 
+                    name='tickerQueryNews' style="text-transform: uppercase; letter-spacing: 2px; font-style: italic;">
+                </div>
+                <!--Drop down for priority input-->
+                <div class="form-group mb-4">
+                    <label class="mr-sm-2" for="inlineFormCustomSelect">Select Priority</label>
+                    <select class="custom-select mr-sm-2" name="tickerqueryPriority" id="inlineFormCustomSelect">
+                        <option selected value="3">Choose a Priority</option>
+                        <option value="3">Low</option> <!--Low Linked to value 3-->
+                        <option value="2">Medium</option> <!--Medium Linked to value 2-->
+                        <option value="1">High</option> <!--High Linked to value 1-->
+                    </select>
+                </div>
+                <div class="col text-center" style="padding: 8px;">
+                    <button type="submit" name="infoFeed" value="addPref" class="btn waves-effect waves-light btn-rounded btn-primary" >
+                        Search
+                    </button>
+                </div>
+            </form>
+            
+            <!--End Search for ticker-->
+
+<!--Start the loop-->
+{% for j in range(session['selectionsLength']) %}
+            <form action="" method="POST" name="deletePreferences">
+                <div class="alert alert-info alert-dismissible fade show" role="alert">
+                    <button type="submit" class="close" name="infoFeed" value="{{session['selections'][j]}}">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <a href="#{{data[j]['ticker']}}">Selected: <strong>{{session['selections'][j]}}</strong>; 
+                        <strong>{{session['wordPri'][j]}}</strong> priority.</a>
+                    To delete, press the cross.
+                </div>
+            </form>
+            
+{% endfor %}
+<!--End the loop-->
+
+        </div>
+    </div>
+</div>  
+</div>
+<div class="col-lg-8">
+<div class="card">
+    <div class="card-body">
+<!--Start Outer Loop news-->
+{% for i in range(length) %}
+        <div class="row" id="{{data[i]['ticker']}}">
+            <div class="col-12 mt-4">
+                <h4 class="card-title">Market: {{data[i]['ticker']}}</h4>
+                <p class="text-muted mt-0 font-12">Search for stocks and they will appear here.</p>
+                <!-- Card -->
+                <div class="card text-center">
+                    <div class="card-header">
+                        Featured
+                    </div>
+                    <!--Start inner loop-->
+                    {% for j in range(3) %}
+                    <div class="card-body">
+                        <h4 class="card-title">{{data[i]['headlines'][j]}}</h4>
+                        <p class="card-text">{{data[i]['dates'][j]}}</p>
+                        <a href="{{data[i]['links'][j]}}" target="_blank" class="btn btn-info">Explore</a>
+                    </div>
+                    {% endfor %}
+                    <!--End inner loop-->
+
+                    <div class="card-footer text-muted">
+                        {{data[i]['ticker']}}
+                        <a href="#topOfPage">Back to the top</a>
+                    </div>
+                    
+                </div>
+                <!-- Card -->
+            </div>
+        </div>
+{% endfor %}
+<!--End Outer Loop-->
+    </div>
+</div>
+</div>
+</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
+  
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
+    
+</head>
+
+<!--Takes layout from layout.html-->
+{% extends 'layout.html' %}
+{% block body %}
+
+
+<!--Start Container-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    
+                    <div class="table-responsive">
+                        <!--Table-->
+                        <script>
+                            $(document).ready( function () {
+                                $('#table_id').DataTable();
+                            });
+                        </script>
+                        <table id="zero_config" class="table table-striped table-bordered no-wrap display">
+                            <thead>
+                                <!--Specify format of data in table-->
+                                <tr>
+                                    <th>Corporation</th>
+                                    <th>Ticker</th>
+                                    <th>Location</th>
+                                    <th>Index</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ACTIVISION BLIZZARD INC.</td>
+                                    <td>ATVI</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>ADOBE INC.</td>
+                                    <td>ADBE</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>ALEXION PHARMACEUTICALS INC.</td>
+                                    <td>ALXN</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>ALIGN TECHNOLOGY INC.</td>
+                                    <td>ALGN</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>ALPHABET A (EX GOOGLE)</td>
+                                    <td>GOOGL</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>ALPHABET C (EX GOOGLE)</td>
+                                    <td>GOOG</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>AMAZON</td>
+                                    <td>AMZN</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        AMD (ADVANCED MICRO DEVICES) INC.</td>
+                                    <td>AMD</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>AMGEN INC.</td>
+                                    <td>AMGN</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>ANALOG DEVICES INC.</td>
+                                    <td>ADI</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>APPLE INC.</td>
+                                    <td>AAPL</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>APPLIED MATERIALS INC.</td>
+                                    <td>AMAT</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        ASML HOLDING NV NY REGISTERED SHS</td>
+                                    <td>ASML</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>AUTODESK INC.</td>
+                                    <td>ADSK</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>AUTOMATIC DATA PROCESSING INC.</td>
+                                    <td>ADP</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>BAIDU.COM INC.</td>
+                                    <td>BIDU</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>BIOGEN INC</td>
+                                    <td>BIIB</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>BROADCOM</td>
+                                    <td>AVGO</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>CADENCE DESIGN SYSTEMS INC.</td>
+                                    <td>CDNS</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>CERNER CORP.</td>
+                                    <td>CERN</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>CHARTER INC (A) (CHARTER COMMUNICATIONS)</td>
+                                    <td>CHTR</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>CHECK POINT SOFTWARE LTD.</td>
+                                    <td>CHKP</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>CINTAS CORP.</td>
+                                    <td>CTAS</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>CISCO INC.</td>
+                                    <td>CSCO</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>COGNIZANT CORP.</td>
+                                    <td>CTSH</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>COMCAST CORP. (CLASS A)</td>
+                                    <td>CMCSA</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>COSTCO WHOLESALE CORP.</td>
+                                    <td>COST</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>CSX CORP.</td>
+                                    <td>CSX</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>DOLLAR TREE INC</td>
+                                    <td>DLTR</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>EBAY INC.</td>
+                                    <td>EBAY</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>ELECTRONIC ARTS INC.</td>
+                                    <td>EA</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>FACEBOOK INC.</td>
+                                    <td>FB</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>FASTENAL CO.</td>
+                                    <td>FAST</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>FISERV INC.</td>
+                                    <td>FISV</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>FOX CORP (EX 21ST CENTURY FOX)</td>
+                                    <td>FOXA</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>GILEAD SCIENCES INC.</td>
+                                    <td>GILD</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>IDEXX LABORATORIES</td>
+                                    <td>IDXX</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>ILLUMINA INC.</td>
+                                    <td>ILMN</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>INCYTE CORP.</td>
+                                    <td>INCY</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>INTEL CORP.</td>
+                                    <td>INTC</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>CINTAS CORP.</td>
+                                    <td>CTAS</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        INTUIT INC.</td>
+                                    <td>INTU</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>INTUITIVE SURGICAL INC</td>
+                                    <td>ISRG</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>JD.COM INC (SPONS. ADRS)</td>
+                                    <td>JD</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>fds</td>
+                                    <td>ISRG</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>KLA-TENCOR CORP.</td>
+                                    <td>KLAC</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>LAM RESEARCH CORP.</td>
+                                    <td>LRCX</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>MARRIOTT INC.</td>
+                                    <td>MAR</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>MAXIM INTEGRATED PRODUCTS INC.</td>
+                                    <td>MXIM</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>MERCADOLIBRE INCSHS</td>
+                                    <td>MELI</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>MICROCHIP TECHNOLOGY INC.</td>
+                                    <td>MCHP</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>MICRON TECHNOLOGY INC.</td>
+                                    <td>MU</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>MICROSOFT CORP.</td>
+                                    <td>MSFT</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>MONDELEZ</td>
+                                    <td>MDLZ</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>MONSTER BEVERAGE CORP BEVERAGE CORPs</td>
+                                    <td>MNST</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>NETEASE INC. (SPONS. ADRS)</td>
+                                    <td>NTES</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>NETFLIX INC.</td>
+                                    <td>NFLX</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>NVIDIA CORP.</td>
+                                    <td>NVDA</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>O REILLY AUTOMOTIVE INC</td>
+                                    <td>ORLY</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>PACCAR INC.</td>
+                                    <td>PCAR</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        PAYPAL INC</td>
+                                    <td>PYPL</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>QUALCOMM INC.</td>
+                                    <td>QCOM</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>REGENERON PHARMACEUTICALS INC.</td>
+                                    <td>REGN</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>ROSS STORES INC.</td>
+                                    <td>ROST</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>SIRIUS XM INC</td>
+                                    <td>SIRI</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>SKYWORKS SOLUTIONS INC.</td>
+                                    <td>SWKS</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>STARBUCKS CORP.</td>
+                                    <td>SBUX</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>SYNOPSYS INC.</td>
+                                    <td>SNPS</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>TESLA</td>
+                                    <td>TSLA</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>TEXAS INSTRUMENTS INC. (TI)</td>
+                                    <td>TXN</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>THE KRAFT HEINZ COMPANY</td>
+                                    <td>KHC</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>T-MOBILE (EX T-MOBILE US)</td>
+                                    <td>TMUS</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>VERISK ANALYTICS INC (A)</td>
+                                    <td>VRSK</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>VERTEX PHARMACEUTICALS INC.</td>
+                                    <td>VRTX</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                <tr>
+                                    <td>WORKDAY INC (A)</td>
+                                    <td>WDAY</td>
+                                    <td>America</td>
+                                    <td>NASDAQ</td>
+                                </tr>
+                                
+                                
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
