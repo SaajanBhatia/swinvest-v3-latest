@@ -109,11 +109,11 @@ newsapi = NewsApiClient(api_key='9764ee4bef1d4af6b4a25153841b1d81')
 def log(message):
     date = ('['+datetime.datetime.today().strftime('%c')+']') ## Finds and formats date
     ipAddress = ('[' + str(request.remote_addr) + ']') ## Finds and formats user IP address
-    logging.warning('******************************************************************************************************')
-    logging.warning(u'\u001b[36m IP ADDRESS OF USER: ' + ipAddress + '\u001b[0m')
-    logging.warning('DATETIME REQUESTED: ' + date)
-    logging.warning('\x1b[6;30;42m' + message + '\x1b[0m') ## Outputs in certain color.
-    logging.warning('******************************************************************************************************')
+    logging.warning('<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<************************************************************')
+    logging.warning('* IP ADDRESS OF USER: ' + ipAddress )
+    logging.warning('* DATETIME REQUESTED: ' + date)
+    logging.warning('* ' + message ) 
+    logging.warning('**************************************************>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>')
 
 #Redirect for Error Page (404) when session times out
 @app.route('/404/<typeOfError>/')
