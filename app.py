@@ -42,7 +42,8 @@ AQA Advanced Level Coursework
 
 #################### Libraries ####################
 # Flask library for web functions
-from flask import Flask, render_template, request, session, logging, url_for, redirect, flash, jsonify
+from flask import Flask, render_template, request, session, url_for, redirect, flash, jsonify
+import logging
 # JSON for data storage and API request handling
 import json 
 
@@ -86,7 +87,9 @@ pageTemplates = {
 }
 
 #Database Connection and Session Declaration
-engine = create_engine(("mysql+pymysql://root:{}@172.31.2.42/swinvest").format(os.environ.get('DATABASE_PASSWORD')), max_overflow=10, pool_size=5)
+## For Local Operation keep the IP Address to the IP address of the local MYSQL Server!! 
+#172.31.2.42
+engine = create_engine(("mysql+pymysql://root:{}@172.31.2.42/swinvest").format(os.environ.get('DATABASE_PASSWORD')))
 db = scoped_session(sessionmaker(bind=engine))
 
 #Web App (Flask) Declaration
@@ -106,11 +109,11 @@ newsapi = NewsApiClient(api_key='9764ee4bef1d4af6b4a25153841b1d81')
 def log(message):
     date = ('['+datetime.datetime.today().strftime('%c')+']') ## Finds and formats date
     ipAddress = ('[' + str(request.remote_addr) + ']') ## Finds and formats user IP address
-    print ('******************************************************************************************************')
-    print ('IP ADDRESS OF USER: ' + ipAddress)
-    print ('DATETIME REQUESTED: ' + date)
-    print('\x1b[6;30;42m' + message + '\x1b[0m') ## Outputs in certain color.
-    print ('******************************************************************************************************')
+    logging.warning('******************************************************************************************************')
+    logging.warning(u'\u001b[36m IP ADDRESS OF USER: ' + ipAddress + '\u001b[0m')
+    logging.warning('DATETIME REQUESTED: ' + date)
+    logging.warning('\x1b[6;30;42m' + message + '\x1b[0m') ## Outputs in certain color.
+    logging.warning('******************************************************************************************************')
 
 #Redirect for Error Page (404) when session times out
 @app.route('/404/<typeOfError>/')
@@ -418,6 +421,10 @@ class data(object):
     def getStock(self):
         stock = yf.Ticker(self.ticker.upper())
         return stock
+
+    def getMean(self, arr):
+        return sum(arr)/len(arr) ## Simple function to get the mean of the data
+                                 ## This function is needed as there is a maximum recursion length on Python
     
     #Get Stock Data (also in plain format) from above method
     def getStockData(self):
@@ -599,21 +606,22 @@ class dashboardFunctions(data):
             'Dates' : []
         }
 #Line 600
-
-        for val in range(1,len(data.index)):
+        for val in range(0,len(data.index.values)):
+           
             if int(data.index[val].strftime('%m')) == prevMonth: ## Compares the months
                 toBeCompressed['Open'].append(data['Open'][val])
                 toBeCompressed['High'].append(data['High'][val])
                 toBeCompressed['Low'].append(data['Low'][val])
                 toBeCompressed['Close'].append(data['Close'][val])
-                prevMonth = int(data.index[val].strftime('%m'))
+                ## prevMonth = int(data.index[val].strftime('%m'))
             else:
+               
                 self.newData['Dates'].append(data.index[val])
                 # Once the month changes, the averages are calculated and added to an aggregate array
-                self.newData['Open'].append(self.calculateAverageOfArr(toBeCompressed['Open']))
-                self.newData['High'].append(self.calculateAverageOfArr(toBeCompressed['High']))
-                self.newData['Low'].append(self.calculateAverageOfArr(toBeCompressed['Low']))
-                self.newData['Close'].append(self.calculateAverageOfArr(toBeCompressed['Close']))
+                self.newData['Open'].append(self.getMean(toBeCompressed['Open']))
+                self.newData['High'].append(self.getMean(toBeCompressed['High']))
+                self.newData['Low'].append(self.getMean(toBeCompressed['Low']))
+                self.newData['Close'].append(self.getMean(toBeCompressed['Close']))
                 toBeCompressed = {
                     'Open' : [],
                     'High' : [],
@@ -804,6 +812,7 @@ class dashboardFunctions(data):
     def getAllData(self, data):
         ## rolls monthly data for ALL data 
         self.rollMonthDataMean(data)
+        
 
 
     def dashboardInput(self):
@@ -1100,9 +1109,6 @@ class projectRisk(data):
         return differences
 #Line 1100
 
-    def getMean(self, arr):
-        return sum(arr)/len(arr) ## Simple function to get the mean of the data
-                                 ## This function is needed as there is a maximum recursion length on Python
             
     def getStd(self,arr): ### Get Standard Deviation
         total = []
