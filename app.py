@@ -1280,7 +1280,7 @@ def profile(firstName, lastName, id):
 @app.route('/tableData')
 def tableData():
     if 'certificate' in session: ## Verify they are signed in to the application
-        return render_template('dataTable.html') ## Simple front end page, no backend function needed
+        return render_template('dataTable.html', pageName='Account Settings') ## Simple front end page, no backend function needed
     else:
         ## Return to 404 page if they are not signed in
         return redirect(url_for('errorPage',typeOfError = 'sessionExpiration'))
