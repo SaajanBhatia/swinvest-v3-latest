@@ -251,7 +251,8 @@ class databaseConnection(object):
         if userDetails['username'] == '' or userDetails['password'] == '': ## Identifies empty fields
             self.flashError('Please fill in all fields','sign-in-danger')
             return False
-        elif 'username' in session: ## If the user is already signed in (data in session)
+        elif 'username' in session: ## If the user is already signed in (data in session) on the same device
+            ## The user can sign in from multiple devices and it should handle the data concurrently.
             self.flashError('The user is already signed in','sign-in-danger')
             return False
         else:
