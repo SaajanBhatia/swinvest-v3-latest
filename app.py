@@ -89,7 +89,7 @@ pageTemplates = {
 #Database Connection and Session Declaration
 ## For Local Operation keep the IP Address to the IP address of the local MYSQL Server!! 
 #172.31.2.42
-engine = create_engine(("mysql+pymysql://root:{}@172.31.2.42/swinvest").format(os.environ.get('DATABASE_PASSWORD')))
+engine = create_engine(("mysql+pymysql://root:{}@172.31.2.42/swinvest").format(os.environ.get('DATABASE_PASSWORD')), pool_recycle=1800)
 db = scoped_session(sessionmaker(bind=engine))
 
 #Web App (Flask) Declaration
@@ -1302,6 +1302,8 @@ def signOut():
     return redirect('/')
 
 #Line 1300
+
+app.config['SQLALCHEMY_POOL_RECYCLE'] = 28000 - 1
 
 if __name__ == '__main__':
 	#A secret key is required for sessions. This is generated randomly using the secrets library
