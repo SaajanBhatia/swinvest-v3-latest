@@ -88,12 +88,13 @@ pageTemplates = {
 
 #Database Connection and Session Declaration
 ## For Local Operation keep the IP Address to the IP address of the local MYSQL Server!! 
-#172.31.2.42
+# Development IP Address - 172.31.2.42
+
 ## Local Dev
-engine = create_engine(("mysql+pymysql://root:{}@localhost/swinvest").format(os.environ.get('DATABASE_PASSWORD')), pool_recycle=1800)
+#engine = create_engine(("mysql+pymysql://root:{}@localhost/swinvest").format(os.environ.get('DATABASE_PASSWORD')), pool_recycle=1800)
 
 ## Production Environment
-#engine = create_engine(("mysql+pymysql://root:{}@172.31.2.42/swinvest").format(os.environ.get('DATABASE_PASSWORD')), pool_recycle=1800)
+engine = create_engine(("mysql+pymysql://root:{}@172.31.2.42/swinvest").format(os.environ.get('DATABASE_PASSWORD')), pool_recycle=1800)
 db = scoped_session(sessionmaker(bind=engine))
 
 #Web App (Flask) Declaration
@@ -1311,12 +1312,12 @@ def signOut():
 app.config['SQLALCHEMY_POOL_RECYCLE'] = 28000 - 1
 
 if __name__ == '__main__':
-	#A secret key is required for sessions. This is generated randomly using the secrets library
+	## A secret key is required for sessions. This is generated randomly using the secrets library
     app.secret_key= secrets.token_hex(16)
-    ## allow debug page for test purposes however set to false for production purposes
+    ## Allow debug page for test purposes however set to false for production purposes
     app.debug = True
-	#Web Application - Running on port 8090 local host (0.0.0.0:8090)
-    app.run(port=8090, threaded=True)
+	## Web Application - Running on port 8090 local host (0.0.0.0:8090)
+    app.run(port=8090, threaded=True, host='0.0.0.0')
 
     
 ########################################## End of Code ##########################################
