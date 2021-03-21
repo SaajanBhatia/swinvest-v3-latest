@@ -541,7 +541,7 @@ class data(object):
 
         return tickerNestedArray
             
-   
+
 #Class 3 - Dashboard Functions (inheritance from Data Class)
 class dashboardFunctions(data):
     def __init__(self):
