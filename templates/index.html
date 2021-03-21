@@ -14,7 +14,7 @@
     <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
         <div class="carousel-item active">
-        <img src="https://images.unsplash.com/photo-1434394354979-a235cd36269d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1633&q=80" class="d-block w-100" alt="..." style="height: 50vh; object-fit: cover;object-position: 100% 80%;">
+        <img src="{{ url_for('static', filename = 'images/dashboard-image.jpg') }}" class="d-block w-100" alt="..." style="height: 50vh; object-fit: cover;object-position: 100% 80%;">
         <div class="carousel-caption " style="top: 65%; transform: translateY(-50%);">
             <h1><strong>Dashboard</strong></h1>
             <h5>Welcome back, {{session['firstName']+' '+session['lastName']}}</h5>

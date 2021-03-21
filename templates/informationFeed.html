@@ -9,7 +9,7 @@ scroll-behavior: smooth;
 <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
 <div class="carousel-inner">
 <div class="carousel-item active">
-<img src="https://cdn.pixabay.com/photo/2014/08/01/15/51/manhattan-407703_960_720.jpg" class="d-block w-100" alt="..." style="height: 50vh; object-fit: cover;width: auto; object-position: 100% 80%;">
+<img src="{{ url_for('static', filename = 'images/new-feed-image.jpg') }}" class="d-block w-100" alt="..." style="height: 50vh; object-fit: cover;width: auto; object-position: 100% 80%;">
 <div class="carousel-caption " style="top: 65%; transform: translateY(-50%);">
 <h1><strong>News Feed</strong></h1>
 <!--User Greetings - access info from Session rather than database retrieval-->

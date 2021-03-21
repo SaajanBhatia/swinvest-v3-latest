@@ -89,7 +89,11 @@ pageTemplates = {
 #Database Connection and Session Declaration
 ## For Local Operation keep the IP Address to the IP address of the local MYSQL Server!! 
 #172.31.2.42
-engine = create_engine(("mysql+pymysql://root:{}@172.31.2.42/swinvest").format(os.environ.get('DATABASE_PASSWORD')), pool_recycle=1800)
+## Local Dev
+engine = create_engine(("mysql+pymysql://root:{}@localhost/swinvest").format(os.environ.get('DATABASE_PASSWORD')), pool_recycle=1800)
+
+## Production Environment
+#engine = create_engine(("mysql+pymysql://root:{}@172.31.2.42/swinvest").format(os.environ.get('DATABASE_PASSWORD')), pool_recycle=1800)
 db = scoped_session(sessionmaker(bind=engine))
 
 #Web App (Flask) Declaration
@@ -1312,7 +1316,7 @@ if __name__ == '__main__':
     ## allow debug page for test purposes however set to false for production purposes
     app.debug = True
 	#Web Application - Running on port 8090 local host (0.0.0.0:8090)
-    app.run(port=8090, threaded=True, host='0.0.0.0')
+    app.run(port=8090, threaded=True)
 
     
 ########################################## End of Code ##########################################
