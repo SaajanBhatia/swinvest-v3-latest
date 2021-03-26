@@ -68,13 +68,13 @@
                                 <!--Make user type username in confirmation of changing password-->
                                 <label>To confirm the change, type your email here.</label>
                                 <input class="form-control" type="email" id="emailaddress1"
-                                    required="" placeholder="{{session['username']}}" name="confirmUsername">
+                                    required placeholder="{{session['username']}}" name="confirmUsername" maxlength="60">
                             </div>
 
                             <div class="form-group">
                                 <!--Input for existing password-->
                                 <label for="password1">Existing Password</label>
-                                <input class="form-control" name="currentPassword" type="password" required=""
+                                <input class="form-control" name="currentPassword" type="password" required
                                     id="password1" placeholder="Enter your existing password">
                             </div>
 
@@ -82,7 +82,7 @@
                                 <!--Input for new password-->
                                 <label for="password1">New Password</label>
                                 <input class="form-control" name="newPassword" type="password" required=""
-                                    id="password1" placeholder="Enter a new password" maxlength="60">
+                                    id="password1" placeholder="Enter a new password" required maxlength="60">
                                     <!--Max Length if new password is saved to database-->
                             </div>
 
@@ -90,7 +90,7 @@
                                 <label for="password1">Confirm Password</label>
                                 <!--Confirmation of new password-->
                                 <input class="form-control" name="confirmNewPassword" type="password" required=""
-                                    id="password1" placeholder="Confirm password">
+                                    id="password1" placeholder="Confirm password" maxlength="60" required>
                             </div>
 
 
@@ -130,7 +130,7 @@
                     <form class="mt-4" name="accSettings" method="POST" action="" value="changeFirstName">
                         <div class="form-group">
                             <input type="text" class="form-control text-center" id="prenametext" name="firstName"
-                             value="{{session['firstName']}}">
+                             value="{{session['firstName']}}" required maxlength="50">
                         </div>
                         <button class="btn btn-info" type="submit" name="accSettings" 
                         value="changeFirstName">
@@ -149,7 +149,7 @@
                     <form class="mt-4" name='accSettings' method="POST" action="" value="changeLastName">
                         <div class="form-group">
                             <input type="text" class="form-control text-center" id="prenametext" name="lastName" 
-                            value="{{session['lastName']}}">
+                            value="{{session['lastName']}}" required maxlength="60">
                         </div>
                         <button class="btn btn-info" type="submit" name="accSettings" 
                         value="changeLastName">
