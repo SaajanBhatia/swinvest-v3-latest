@@ -389,6 +389,10 @@ class databaseConnection(object):
         currentPassword = self.getProfileInput('currentPassword')
         newPassword = self.getProfileInput('newPassword')
         confirmNewPassword = self.getProfileInput('confirmNewPassword')
+
+        existingPassword = db.execute('SELECT password FROM accounts WHERE username = :username', {
+            'username' : session['username'].upper()
+        }).fetchone()
         if currentUsername.upper() != session['username'].upper():
             # check if username confirmation is correct
             self.flashError('The username entered does not match', 'accountSettingError')
@@ -398,6 +402,9 @@ class databaseConnection(object):
         elif not self.validPassword(newPassword):
             # checks if new password is correct
             self.flashError('The new password is not strong enough', 'accountSettingError')
+        elif not sha256_crypt.verify(currentPassword, existingPassword[0]):
+            ## Checks the password entered is correct (current user password against the database password)
+            self.flashError('Incorrect User Password Entered. Please Try Again', 'accountSettingError')
         else:
             db.execute('UPDATE accounts SET password = :newPassword WHERE uid = :userID',{
                 'newPassword' : sha256_crypt.hash(newPassword), ## encrypts new password
