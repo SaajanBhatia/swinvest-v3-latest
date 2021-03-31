@@ -9,7 +9,7 @@ Main features of Swinvest include;
 - Analysis of top Share Holders
 
 Please check out the site;
-https://www.swinvset.co.uk/
+https://www.swinvest.co.uk/
 
 # How to Deploy locally
 1. Download the pip requirements
